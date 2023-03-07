@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "rxoptional",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxOptional",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d4f68f6c5ca80efacdc7a562181d9d040ad519c7"
+      }
+    },
+    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift",

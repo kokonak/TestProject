@@ -24,6 +24,7 @@
 		B6F5C21229B6E4240002A966 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C21129B6E4240002A966 /* Colors.xcassets */; };
 		B6F5C21629B6E6700002A966 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C21529B6E6700002A966 /* Icons.xcassets */; };
 		B6F5C22229B6FF6D0002A966 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C22129B6FF6D0002A966 /* ViewModel.swift */; };
+		B6F5C23C29B75A3C0002A966 /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C23B29B75A3C0002A966 /* RxOptional */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F5C23C29B75A3C0002A966 /* RxOptional in Frameworks */,
 				B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */,
 				B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */,
 				B6F5C20C29B6E3090002A966 /* Then in Frameworks */,
@@ -193,6 +195,7 @@
 				B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */,
 				B6F5C20729B6E2F80002A966 /* SnapKit */,
 				B6F5C20B29B6E3090002A966 /* Then */,
+				B6F5C23B29B75A3C0002A966 /* RxOptional */,
 			);
 			productName = TestProject;
 			productReference = B6F5C1AB29B5AE010002A966 /* TestProject.app */;
@@ -273,6 +276,7 @@
 				B6F5C1F929B6E1480002A966 /* XCRemoteSwiftPackageReference "R.swift" */,
 				B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */,
+				B6F5C23A29B75A3C0002A966 /* XCRemoteSwiftPackageReference "RxOptional" */,
 			);
 			productRefGroup = B6F5C1AC29B5AE010002A966 /* Products */;
 			projectDirPath = "";
@@ -715,6 +719,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		B6F5C23A29B75A3C0002A966 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -751,6 +763,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		B6F5C23B29B75A3C0002A966 /* RxOptional */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C23A29B75A3C0002A966 /* XCRemoteSwiftPackageReference "RxOptional" */;
+			productName = RxOptional;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
