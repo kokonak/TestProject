@@ -19,6 +19,8 @@
 		B6F5C1F529B6DFF90002A966 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1F429B6DFF90002A966 /* RxSwift */; };
 		B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1F729B6E00C0002A966 /* SDWebImage */; };
 		B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */; };
+		B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C20729B6E2F80002A966 /* SnapKit */; };
+		B6F5C20C29B6E3090002A966 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C20B29B6E3090002A966 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 			files = (
 				B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */,
 				B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */,
+				B6F5C20C29B6E3090002A966 /* Then in Frameworks */,
+				B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */,
 				B6F5C1F529B6DFF90002A966 /* RxSwift in Frameworks */,
 				B6F5C1F229B6DFE80002A966 /* Moya in Frameworks */,
 			);
@@ -162,6 +166,8 @@
 				B6F5C1F429B6DFF90002A966 /* RxSwift */,
 				B6F5C1F729B6E00C0002A966 /* SDWebImage */,
 				B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */,
+				B6F5C20729B6E2F80002A966 /* SnapKit */,
+				B6F5C20B29B6E3090002A966 /* Then */,
 			);
 			productName = TestProject;
 			productReference = B6F5C1AB29B5AE010002A966 /* TestProject.app */;
@@ -240,6 +246,8 @@
 				B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B6F5C1F629B6E00C0002A966 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				B6F5C1F929B6E1480002A966 /* XCRemoteSwiftPackageReference "R.swift" */,
+				B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = B6F5C1AC29B5AE010002A966 /* Products */;
 			projectDirPath = "";
@@ -663,6 +671,22 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -689,6 +713,16 @@
 		B6F5C1FF29B6E1A50002A966 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		B6F5C20729B6E2F80002A966 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B6F5C20B29B6E3090002A966 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
