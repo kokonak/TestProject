@@ -23,6 +23,7 @@
 		B6F5C20C29B6E3090002A966 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C20B29B6E3090002A966 /* Then */; };
 		B6F5C21229B6E4240002A966 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C21129B6E4240002A966 /* Colors.xcassets */; };
 		B6F5C21629B6E6700002A966 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C21529B6E6700002A966 /* Icons.xcassets */; };
+		B6F5C22229B6FF6D0002A966 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C22129B6FF6D0002A966 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B6F5C1D129B5AE020002A966 /* TestProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B6F5C21129B6E4240002A966 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B6F5C21529B6E6700002A966 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		B6F5C22129B6FF6D0002A966 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		B6F5C1AD29B5AE010002A966 /* TestProject */ = {
 			isa = PBXGroup;
 			children = (
+				B6F5C22029B6FF640002A966 /* Commons */,
 				B6F5C21029B6E40D0002A966 /* Assets */,
 				B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */,
 				B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */,
@@ -156,6 +159,14 @@
 				B6F5C21529B6E6700002A966 /* Icons.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		B6F5C22029B6FF640002A966 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				B6F5C22129B6FF6D0002A966 /* ViewModel.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +320,7 @@
 			files = (
 				B6F5C1B329B5AE010002A966 /* ViewController.swift in Sources */,
 				B6F5C1AF29B5AE010002A966 /* AppDelegate.swift in Sources */,
+				B6F5C22229B6FF6D0002A966 /* ViewModel.swift in Sources */,
 				B6F5C1B129B5AE010002A966 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
