@@ -15,6 +15,12 @@
 		B6F5C1C629B5AE020002A966 /* TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1C529B5AE020002A966 /* TestProjectTests.swift */; };
 		B6F5C1D029B5AE020002A966 /* TestProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1CF29B5AE020002A966 /* TestProjectUITests.swift */; };
 		B6F5C1D229B5AE020002A966 /* TestProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1D129B5AE020002A966 /* TestProjectUITestsLaunchTests.swift */; };
+		B6F5C1F229B6DFE80002A966 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1F129B6DFE80002A966 /* Moya */; };
+		B6F5C1F529B6DFF90002A966 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1F429B6DFF90002A966 /* RxSwift */; };
+		B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1F729B6E00C0002A966 /* SDWebImage */; };
+		B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */; };
+		B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C20729B6E2F80002A966 /* SnapKit */; };
+		B6F5C20C29B6E3090002A966 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B6F5C20B29B6E3090002A966 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */,
+				B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */,
+				B6F5C20C29B6E3090002A966 /* Then in Frameworks */,
+				B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */,
+				B6F5C1F529B6DFF90002A966 /* RxSwift in Frameworks */,
+				B6F5C1F229B6DFE80002A966 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,7 @@
 				B6F5C1C429B5AE020002A966 /* TestProjectTests */,
 				B6F5C1CE29B5AE020002A966 /* TestProjectUITests */,
 				B6F5C1AC29B5AE010002A966 /* Products */,
+				B6F5C1FC29B6E18A0002A966 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,10 +110,10 @@
 		B6F5C1AD29B5AE010002A966 /* TestProject */ = {
 			isa = PBXGroup;
 			children = (
+				B6F5C1B729B5AE020002A966 /* Assets.xcassets */,
 				B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */,
 				B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */,
 				B6F5C1B229B5AE010002A966 /* ViewController.swift */,
-				B6F5C1B729B5AE020002A966 /* Assets.xcassets */,
 				B6F5C1B929B5AE020002A966 /* LaunchScreen.storyboard */,
 				B6F5C1BC29B5AE020002A966 /* Info.plist */,
 			);
@@ -124,6 +137,13 @@
 			path = TestProjectUITests;
 			sourceTree = "<group>";
 		};
+		B6F5C1FC29B6E18A0002A966 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,8 +158,17 @@
 			buildRules = (
 			);
 			dependencies = (
+				B6F5C20029B6E1A50002A966 /* PBXTargetDependency */,
 			);
 			name = TestProject;
+			packageProductDependencies = (
+				B6F5C1F129B6DFE80002A966 /* Moya */,
+				B6F5C1F429B6DFF90002A966 /* RxSwift */,
+				B6F5C1F729B6E00C0002A966 /* SDWebImage */,
+				B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */,
+				B6F5C20729B6E2F80002A966 /* SnapKit */,
+				B6F5C20B29B6E3090002A966 /* Then */,
+			);
 			productName = TestProject;
 			productReference = B6F5C1AB29B5AE010002A966 /* TestProject.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +241,14 @@
 				Base,
 			);
 			mainGroup = B6F5C1A229B5AE010002A966;
+			packageReferences = (
+				B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */,
+				B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B6F5C1F629B6E00C0002A966 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B6F5C1F929B6E1480002A966 /* XCRemoteSwiftPackageReference "R.swift" */,
+				B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = B6F5C1AC29B5AE010002A966 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,6 +326,10 @@
 			isa = PBXTargetDependency;
 			target = B6F5C1AA29B5AE010002A966 /* TestProject */;
 			targetProxy = B6F5C1CC29B5AE020002A966 /* PBXContainerItemProxy */;
+		};
+		B6F5C20029B6E1A50002A966 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B6F5C1FF29B6E1A50002A966 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -596,6 +637,94 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		B6F5C1F629B6E00C0002A966 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B6F5C1F929B6E1480002A966 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6F5C1F129B6DFE80002A966 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		B6F5C1F429B6DFF90002A966 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B6F5C1F729B6E00C0002A966 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F629B6E00C0002A966 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B6F5C1FD29B6E18A0002A966 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F929B6E1480002A966 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
+		B6F5C1FF29B6E1A50002A966 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		B6F5C20729B6E2F80002A966 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B6F5C20B29B6E3090002A966 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6F5C1A329B5AE010002A966 /* Project object */;
 }
