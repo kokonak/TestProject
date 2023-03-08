@@ -88,7 +88,7 @@ extension MainTabViewController {
     }
 }
 
-// MARK: - Private functions
+// MARK: - Other Methods
 extension MainTabViewController {
 
     private func getViewController(with tab: TabModel) -> UIViewController {
