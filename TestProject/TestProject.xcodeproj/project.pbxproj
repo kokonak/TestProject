@@ -14,6 +14,7 @@
 		B6B5D87329B8050800BD7005 /* BannerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87229B8050800BD7005 /* BannerViewCell.swift */; };
 		B6B5D87629B8069D00BD7005 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87529B8069D00BD7005 /* ReusableView.swift */; };
 		B6B5D87829B87A2200BD7005 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87729B87A2200BD7005 /* Banner.swift */; };
+		B6B5D88829B892E700BD7005 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = B6B5D88729B892E700BD7005 /* RxDataSources */; };
 		B6F5C1AF29B5AE010002A966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */; };
 		B6F5C1B129B5AE010002A966 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */; };
 		B6F5C1B829B5AE020002A966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C1B729B5AE020002A966 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 				B6F5C20C29B6E3090002A966 /* Then in Frameworks */,
 				B6F5C22729B718A00002A966 /* RxCocoa in Frameworks */,
 				B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */,
+				B6B5D88829B892E700BD7005 /* RxDataSources in Frameworks */,
 				B6F5C1F529B6DFF90002A966 /* RxSwift in Frameworks */,
 				B6F5C1F229B6DFE80002A966 /* Moya in Frameworks */,
 			);
@@ -322,6 +324,7 @@
 				B6F5C20B29B6E3090002A966 /* Then */,
 				B6F5C23B29B75A3C0002A966 /* RxOptional */,
 				B6F5C22629B718A00002A966 /* RxCocoa */,
+				B6B5D88729B892E700BD7005 /* RxDataSources */,
 			);
 			productName = TestProject;
 			productReference = B6F5C1AB29B5AE010002A966 /* TestProject.app */;
@@ -403,6 +406,7 @@
 				B6F5C20629B6E2F80002A966 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B6F5C20A29B6E3090002A966 /* XCRemoteSwiftPackageReference "Then" */,
 				B6F5C23A29B75A3C0002A966 /* XCRemoteSwiftPackageReference "RxOptional" */,
+				B6B5D88629B892E700BD7005 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = B6F5C1AC29B5AE010002A966 /* Products */;
 			projectDirPath = "";
@@ -806,6 +810,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B6B5D88629B892E700BD7005 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -865,6 +877,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B6B5D88729B892E700BD7005 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6B5D88629B892E700BD7005 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		B6F5C1F129B6DFE80002A966 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */;
