@@ -50,6 +50,11 @@ final class BannerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        flowLayout.itemSize = collectionView.frame.size
+    }
 }
 
 // MARK: - Initialize UI
@@ -151,13 +156,11 @@ extension BannerView {
             guard let self = self else { return }
             guard let image = image else { return }
 
-            self.flowLayout.itemSize = CGSize(
-                width: self.collectionView.frame.width,
-                height: round(image.size.height / image.size.width * self.collectionView.frame.width)
-            )
             self.collectionView.snp.remakeConstraints {
                 $0.edges.equalToSuperview()
-                $0.height.equalTo(self.flowLayout.itemSize.height).priority(.high)
+                $0.height.equalTo(
+                    round(image.size.height / image.size.width * self.collectionView.frame.width)
+                ).priority(.high)
             }
 
             UIView.setAnimationsEnabled(false)

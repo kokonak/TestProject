@@ -8,7 +8,7 @@
 import RxDataSources
 
 struct HomeSectionModel {
-    
+
     var items: [HomeItem]
 
     func getGoodsCellViewModelIndex(_ viewModel: GoodsCellViewModel) -> Int? {
