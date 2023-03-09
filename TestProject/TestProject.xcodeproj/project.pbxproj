@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6A699DF29BA1DDD009EB1E2 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */; };
+		B6A699E229BA1DF2009EB1E2 /* GoodsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */; };
 		B6B5D86629B7835600BD7005 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */; };
 		B6B5D86829B7839600BD7005 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */; };
 		B6B5D86E29B786F100BD7005 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86D29B786F100BD7005 /* BannerView.swift */; };
@@ -30,6 +32,7 @@
 		B6E80EC129B9B5FE00221E3C /* FavoriteGoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E80EC029B9B5FE00221E3C /* FavoriteGoodsManager.swift */; };
 		B6E80EC529B9B6C100221E3C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6E80EC429B9B6C100221E3C /* RealmSwift */; };
 		B6E80ECB29B9EEEC00221E3C /* GoodsRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E80ECA29B9EEEC00221E3C /* GoodsRealmObject.swift */; };
+		B6E80ECE29B9F7A400221E3C /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E80ECD29B9F7A400221E3C /* HomeAPI.swift */; };
 		B6F5C1AF29B5AE010002A966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */; };
 		B6F5C1B129B5AE010002A966 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */; };
 		B6F5C1B829B5AE020002A966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C1B729B5AE020002A966 /* Assets.xcassets */; };
@@ -71,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
+		B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListResponse.swift; sourceTree = "<group>"; };
 		B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		B6B5D86D29B786F100BD7005 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 		B6E80EBD29B997EE00221E3C /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		B6E80EC029B9B5FE00221E3C /* FavoriteGoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteGoodsManager.swift; sourceTree = "<group>"; };
 		B6E80ECA29B9EEEC00221E3C /* GoodsRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRealmObject.swift; sourceTree = "<group>"; };
+		B6E80ECD29B9F7A400221E3C /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		B6F5C1AB29B5AE010002A966 /* TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +152,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6A699DB29BA1DCA009EB1E2 /* HomeAPI */ = {
+			isa = PBXGroup;
+			children = (
+				B6A699DD29BA1DD2009EB1E2 /* ResponseModels */,
+				B6E80ECD29B9F7A400221E3C /* HomeAPI.swift */,
+			);
+			path = HomeAPI;
+			sourceTree = "<group>";
+		};
+		B6A699DD29BA1DD2009EB1E2 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */,
+				B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
 		B6B5D86429B7834000BD7005 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +387,14 @@
 			path = FavoriteGoods;
 			sourceTree = "<group>";
 		};
+		B6E80ECC29B9F78100221E3C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B6A699DB29BA1DCA009EB1E2 /* HomeAPI */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		B6F5C1A229B5AE010002A966 = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +419,7 @@
 		B6F5C1AD29B5AE010002A966 /* TestProject */ = {
 			isa = PBXGroup;
 			children = (
+				B6E80ECC29B9F78100221E3C /* Network */,
 				B6E80EBF29B9B5ED00221E3C /* Managers */,
 				B6B5D86C29B786C400BD7005 /* Components */,
 				B6B5D86429B7834000BD7005 /* Extensions */,
@@ -649,6 +682,8 @@
 				B6B5D89E29B8CEC700BD7005 /* HomeSectionModel.swift in Sources */,
 				B6B5D8A029B8CF1900BD7005 /* Goods.swift in Sources */,
 				B6E80EBE29B997EE00221E3C /* UICollectionView+Extension.swift in Sources */,
+				B6A699DF29BA1DDD009EB1E2 /* HomeResponse.swift in Sources */,
+				B6E80ECE29B9F7A400221E3C /* HomeAPI.swift in Sources */,
 				B6E80EB929B994EA00221E3C /* FavoriteViewModel.swift in Sources */,
 				B6E80EBB29B997E200221E3C /* UICollectionReusableView+Extension.swift in Sources */,
 				B6F5C21E29B6FF550002A966 /* MainTabViewController.swift in Sources */,
@@ -667,6 +702,7 @@
 				B6B5D86E29B786F100BD7005 /* BannerView.swift in Sources */,
 				B6B5D86829B7839600BD7005 /* UITabBar+Extension.swift in Sources */,
 				B6F5C1B129B5AE010002A966 /* SceneDelegate.swift in Sources */,
+				B6A699E229BA1DF2009EB1E2 /* GoodsListResponse.swift in Sources */,
 				B6B5D88429B891FA00BD7005 /* HomeViewModel.swift in Sources */,
 				B6B5D86629B7835600BD7005 /* UINavigationBar+Extension.swift in Sources */,
 			);
