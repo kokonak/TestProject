@@ -5,6 +5,8 @@
 //  Created by kokonak on 2023/03/08.
 //
 
+import Then
+
 struct Goods {
     let id: Int
     let name: String
@@ -18,6 +20,8 @@ struct Goods {
     }
     var isFavorite: Bool = false
 }
+
+extension Goods: Then { }
 
 extension Goods {
 

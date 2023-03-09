@@ -13,13 +13,6 @@ import RxDataSources
 
 final class HomeViewController: UIViewController {
 
-    private let flowLayout = UICollectionViewFlowLayout().then {
-        $0.minimumInteritemSpacing = 0
-        $0.minimumLineSpacing = 0
-        $0.scrollDirection = .vertical
-        $0.sectionInset = .zero
-    }
-
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
@@ -44,7 +37,6 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     private let viewModel: HomeViewModel
     private let disposeBag = DisposeBag()
-    private var models: [HomeSectionModel] = []
 
     init(_ viewModel: HomeViewModel = HomeViewModel()) {
         self.viewModel = viewModel
@@ -75,11 +67,6 @@ extension HomeViewController {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
-        flowLayout.estimatedItemSize = .init(width: view.frame.width, height: view.frame.width)
-        flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
-
-        view.layoutIfNeeded()
     }
 }
 
@@ -115,12 +102,6 @@ extension HomeViewController {
 
         viewModel.output.sectionModels
             .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-
-        viewModel.output.sectionModels
-            .subscribe(onNext: { [weak self] models in
-                self?.models = models
-            })
             .disposed(by: disposeBag)
     }
 

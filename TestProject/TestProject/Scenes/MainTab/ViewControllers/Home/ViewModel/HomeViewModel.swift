@@ -65,16 +65,10 @@ extension HomeViewModel {
                 guard let goodsIndex = section.getGoodsCellViewModelIndex(viewModel) else { return nil }
 
                 let oldGoods = viewModel.dependency.goods
-                let newGoods = Goods(
-                    id: oldGoods.id,
-                    name: oldGoods.name,
-                    image: oldGoods.image,
-                    actualPrice: oldGoods.actualPrice,
-                    price: oldGoods.price,
-                    isNew: oldGoods.isNew,
-                    cellCount: oldGoods.cellCount,
-                    isFavorite: !oldGoods.isFavorite
-                )
+
+                let newGoods = oldGoods.with {
+                    $0.isFavorite = !oldGoods.isFavorite
+                }
 
                 let newViewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
                 self?.bindGoodsCellViewModel(newViewModel)
