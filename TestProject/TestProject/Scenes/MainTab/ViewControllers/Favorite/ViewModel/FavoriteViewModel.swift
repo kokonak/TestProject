@@ -41,7 +41,13 @@ final class FavoriteViewModel: ViewModel {
 
     func transform() {
         loadDataSubject
-            .map { Goods.dummies.map { .init(.init(isFavoriteEnabled: false, goods: $0)) } }
+            .withLatestFrom(FavoriteGoodsManager.shared.favoriteGoodsList)
+            .map { goodsList in goodsList.map { .init(.init(isFavoriteEnabled: false, goods: $0))} }
+            .bind(to: goodsRelay)
+            .disposed(by: disposeBag)
+
+        FavoriteGoodsManager.shared.favoriteGoodsList
+            .map { goodsList in goodsList.map { .init(.init(isFavoriteEnabled: false, goods: $0))} }
             .bind(to: goodsRelay)
             .disposed(by: disposeBag)
     }
