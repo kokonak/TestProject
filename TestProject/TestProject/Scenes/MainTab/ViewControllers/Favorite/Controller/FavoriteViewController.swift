@@ -80,7 +80,13 @@ extension FavoriteViewController {
 
     /// Binding input of ViewModel
     private func bindViewModelInput() {
-
+        collectionView.rx.willDisplayCell
+            .map { $0.at }
+            .withLatestFrom(viewModel.output.goods) { ($0, $1) }
+            .filter { index, goods in index.row == goods.count - 1 }
+            .map { _, _ in () }
+            .bind(to: viewModel.input.loadMore)
+            .disposed(by: disposeBag)
     }
 
     /// Binding output of ViewModel

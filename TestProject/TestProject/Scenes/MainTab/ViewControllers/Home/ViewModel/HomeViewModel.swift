@@ -23,7 +23,6 @@ final class HomeViewModel: ViewModel {
         let sectionModels: Observable<[HomeSectionModel]>
     }
 
-
     let dependency: Dependency
     let input: Input
     let output: Output
@@ -43,17 +42,15 @@ final class HomeViewModel: ViewModel {
         let banner: HomeItem = .banner(.init(.init(banners: Banner.dummies)))
 
         loadDataSubject
-            .withLatestFrom(FavoriteGoodsManager.shared.favoriteGoodsList)
-            .map { goodsList in goodsList.map { $0.id }}
             .withUnretained(self)
-            .map { owner, goodsIdList in
+            .map { owner, _ in
                 let goodsList: [HomeItem] = Goods.dummies.map { goods in
                     let newGoods = goods.with {
-                        $0.isFavorite = goodsIdList.contains(where: { id in id == goods.id })
+                        $0.isFavorite = FavoriteGoodsManager.shared.isFavoriteGoods(goods.id)
                     }
                     let viewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
                     owner.bindGoodsCellViewModel(viewModel)
-                    
+
                     return .goods(viewModel)
                 }
                 return [.init(items: [banner] + goodsList)]
