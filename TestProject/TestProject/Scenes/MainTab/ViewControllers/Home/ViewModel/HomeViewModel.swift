@@ -23,7 +23,6 @@ final class HomeViewModel: ViewModel {
         let sectionModels: Observable<[HomeSectionModel]>
     }
 
-
     let dependency: Dependency
     let input: Input
     let output: Output
@@ -41,14 +40,21 @@ final class HomeViewModel: ViewModel {
 
     func transform() {
         let banner: HomeItem = .banner(.init(.init(banners: Banner.dummies)))
-        let goodsList: [HomeItem] = Goods.dummies.map {
-            let viewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: $0))
-            self.bindGoodsCellViewModel(viewModel)
-            return .goods(viewModel)
-        }
 
         loadDataSubject
-            .map { [.init(items: [banner] + goodsList)] }
+            .withUnretained(self)
+            .map { owner, _ in
+                let goodsList: [HomeItem] = Goods.dummies.map { goods in
+                    let newGoods = goods.with {
+                        $0.isFavorite = FavoriteGoodsManager.shared.isFavoriteGoods(goods.id)
+                    }
+                    let viewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
+                    owner.bindGoodsCellViewModel(viewModel)
+
+                    return .goods(viewModel)
+                }
+                return [.init(items: [banner] + goodsList)]
+            }
             .bind(to: sectionModelsRelay)
             .disposed(by: disposeBag)
     }
@@ -65,16 +71,16 @@ extension HomeViewModel {
                 guard let goodsIndex = section.getGoodsCellViewModelIndex(viewModel) else { return nil }
 
                 let oldGoods = viewModel.dependency.goods
-                let newGoods = Goods(
-                    id: oldGoods.id,
-                    name: oldGoods.name,
-                    image: oldGoods.image,
-                    actualPrice: oldGoods.actualPrice,
-                    price: oldGoods.price,
-                    isNew: oldGoods.isNew,
-                    cellCount: oldGoods.cellCount,
-                    isFavorite: !oldGoods.isFavorite
-                )
+
+                let newGoods = oldGoods.with {
+                    $0.isFavorite = !oldGoods.isFavorite
+                }
+
+                if newGoods.isFavorite {
+                    FavoriteGoodsManager.shared.addGoods(newGoods)
+                } else {
+                    FavoriteGoodsManager.shared.removeGoods(newGoods)
+                }
 
                 let newViewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
                 self?.bindGoodsCellViewModel(newViewModel)

@@ -1,17 +1,17 @@
 //
-//  HomeViewController.swift
+//  FavoriteViewController.swift
 //  TestProject
 //
-//  Created by kokonak on 2023/03/08.
+//  Created by kokonak on 2023/03/09.
 //  
 //
 
 import UIKit
+
 import RxSwift
 import RxCocoa
-import RxDataSources
 
-final class HomeViewController: UIViewController {
+final class FavoriteViewController: UIViewController {
 
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(
@@ -29,16 +29,15 @@ final class HomeViewController: UIViewController {
     }()
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout).then {
-        $0.register(HomeBannerCell.self)
         $0.register(GoodsCell.self)
         $0.alwaysBounceVertical = true
     }
 
     // MARK: - Properties
-    private let viewModel: HomeViewModel
+    private let viewModel: FavoriteViewModel
     private let disposeBag = DisposeBag()
 
-    init(_ viewModel: HomeViewModel = HomeViewModel()) {
+    init(viewModel: FavoriteViewModel = FavoriteViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,7 +57,7 @@ final class HomeViewController: UIViewController {
 }
 
 // MARK: - Initialize UI
-extension HomeViewController {
+extension FavoriteViewController {
     /// Setup UI
     private func setupUI() {
         view.backgroundColor = .white
@@ -71,7 +70,7 @@ extension HomeViewController {
 }
 
 // MARK: - Binding ViewModel
-extension HomeViewController {
+extension FavoriteViewController {
 
     /// Binding ViewModel
     private func bindViewModel() {
@@ -81,27 +80,24 @@ extension HomeViewController {
 
     /// Binding input of ViewModel
     private func bindViewModelInput() {
-
+        collectionView.rx.willDisplayCell
+            .map { $0.at }
+            .withLatestFrom(viewModel.output.goods) { ($0, $1) }
+            .filter { index, goods in index.row == goods.count - 1 }
+            .map { _, _ in () }
+            .bind(to: viewModel.input.loadMore)
+            .disposed(by: disposeBag)
     }
 
     /// Binding output of ViewModel
     private func bindViewModelOutput() {
-        let dataSource = RxCollectionViewSectionedReloadDataSource<HomeSectionModel> { _, collectionView, index, item in
-            switch item {
-                case .banner(let viewModel):
-                    let cell: HomeBannerCell = collectionView.dequeueReusableCell(forIndexPath: index)
-                    cell.setData(viewModel)
-                    return cell
-
-                case .goods(let viewModel):
-                    let cell: GoodsCell = collectionView.dequeueReusableCell(forIndexPath: index)
-                    cell.setData(viewModel)
-                    return cell
+        viewModel.output.goods
+            .bind(to: collectionView.rx.items(
+                cellIdentifier: GoodsCell.reuseIdentifier,
+                cellType: GoodsCell.self
+            )) { index, goods, cell in
+                cell.setData(goods)
             }
-        }
-
-        viewModel.output.sectionModels
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 
@@ -112,6 +108,6 @@ extension HomeViewController {
 }
 
 // MARK: - Other Functions
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension FavoriteViewController {
 
 }
