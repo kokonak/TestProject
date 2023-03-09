@@ -19,10 +19,13 @@ final class GoodsCellViewModel: ViewModel {
     
     struct Input {
         let loadData: AnyObserver<Void>
+        let favoriteTap: AnyObserver<Void>
     }
     
     struct Output {
         let image: Observable<String>
+        let isFavoriteHidden: Observable<Bool>
+        let isFavorite: Observable<Bool>
         let discount: Observable<String>
         let isDiscountHidden: Observable<Bool>
         let price: Observable<String>
@@ -30,6 +33,7 @@ final class GoodsCellViewModel: ViewModel {
         let isNewHidden: Observable<Bool>
         let cellCount: Observable<String>
         let isCellCountHidden: Observable<Bool>
+        let favoriteTapped: Observable<Goods>
     }
 
     let dependency: Dependency
@@ -37,7 +41,10 @@ final class GoodsCellViewModel: ViewModel {
     let output: Output
     let disposeBag = DisposeBag()
     private let loadDataSubject = PublishSubject<Void>()
+    private let favoriteTapSubject = PublishSubject<Void>()
     private let imageRelay = PublishRelay<String>()
+    private let isFavoriteHidden = PublishRelay<Bool>()
+    private let isFavoriteRelay = PublishRelay<Bool>()
     private let discountRelay = PublishRelay<String>()
     private let isDiscountHiddenRelay = PublishRelay<Bool>()
     private let priceRelay = PublishRelay<String>()
@@ -45,19 +52,26 @@ final class GoodsCellViewModel: ViewModel {
     private let isNewHiddenRelay = PublishRelay<Bool>()
     private let cellCountRelay = PublishRelay<String>()
     private let isCellCountHiddenRelay = PublishRelay<Bool>()
+    private let favoriteTappedRelay = PublishRelay<Goods>()
     
     init(_ dependency: Dependency) {
         self.dependency = dependency
-        input = Input(loadData: loadDataSubject.asObserver())
+        input = Input(
+            loadData: loadDataSubject.asObserver(),
+            favoriteTap: favoriteTapSubject.asObserver()
+        )
         output = Output(
             image: imageRelay.asObservable(),
+            isFavoriteHidden: isFavoriteHidden.asObservable(),
+            isFavorite: isFavoriteRelay.asObservable(),
             discount: discountRelay.asObservable(),
             isDiscountHidden: isDiscountHiddenRelay.asObservable(),
             price: priceRelay.asObservable(),
             name: nameRelay.asObservable(),
             isNewHidden: isNewHiddenRelay.asObservable(),
             cellCount: cellCountRelay.asObservable(),
-            isCellCountHidden: isCellCountHiddenRelay.asObservable()
+            isCellCountHidden: isCellCountHiddenRelay.asObservable(),
+            favoriteTapped: favoriteTappedRelay.asObservable()
         )
 
         transform()
@@ -74,9 +88,26 @@ final class GoodsCellViewModel: ViewModel {
             .bind(to: goodsRelay)
             .disposed(by: disposeBag)
 
+        favoriteTapSubject
+            .withUnretained(self)
+            .map { owner, _ in owner.dependency.goods }
+            .bind(to: favoriteTappedRelay)
+            .disposed(by: disposeBag)
+
         goodsRelay
             .map { $0.image }
             .bind(to: imageRelay)
+            .disposed(by: disposeBag)
+
+        goodsRelay
+            .withUnretained(self)
+            .map { owner, _ in !owner.dependency.isFavoriteEnabled }
+            .bind(to: isFavoriteHidden)
+            .disposed(by: disposeBag)
+
+        goodsRelay
+            .map { $0.isFavorite }
+            .bind(to: isFavoriteRelay)
             .disposed(by: disposeBag)
 
         goodsRelay
@@ -114,6 +145,11 @@ final class GoodsCellViewModel: ViewModel {
         goodsRelay
             .map { $0.cellCount < 10 }
             .bind(to: isCellCountHiddenRelay)
+            .disposed(by: disposeBag)
+
+        goodsRelay
+            .map { $0.isFavorite }
+            .bind(to: isFavoriteRelay)
             .disposed(by: disposeBag)
     }
 }

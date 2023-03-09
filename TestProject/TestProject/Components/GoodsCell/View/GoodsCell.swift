@@ -146,11 +146,23 @@ extension GoodsCell {
 extension GoodsCell {
 
     func setData(_ viewModel: GoodsCellViewModel) {
+        favoriteButton.rx.tap
+            .bind(to: viewModel.input.favoriteTap)
+            .disposed(by: disposeBag)
+
         viewModel.output.image
             .asDriver(onErrorJustReturn: "")
             .drive(onNext: { [weak self] image in
                 self?.imageView.sd_setImage(with: URL(string: image))
             })
+            .disposed(by: disposeBag)
+
+        viewModel.output.isFavoriteHidden
+            .bind(to: favoriteButton.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel.output.isFavorite
+            .bind(to: favoriteButton.rx.isSelected)
             .disposed(by: disposeBag)
 
         viewModel.output.discount
@@ -179,13 +191,6 @@ extension GoodsCell {
 
         viewModel.output.isCellCountHidden
             .bind(to: cellCountLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-
-        favoriteButton.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.favoriteButton.isSelected.toggle()
-            })
             .disposed(by: disposeBag)
 
         viewModel.input.loadData.onNext(())

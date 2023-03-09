@@ -16,6 +16,7 @@ struct Goods {
     var discount: Int {
         Int((1 - Float(price) / Float(actualPrice)) * 100)
     }
+    var isFavorite: Bool = false
 }
 
 extension Goods {

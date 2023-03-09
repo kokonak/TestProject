@@ -41,7 +41,11 @@ final class HomeViewModel: ViewModel {
 
     func transform() {
         let banner: HomeItem = .banner(.init(.init(banners: Banner.dummies)))
-        let goodsList: [HomeItem] = Goods.dummies.map { .goods(.init(.init(isFavoriteEnabled: true, goods: $0))) }
+        let goodsList: [HomeItem] = Goods.dummies.map {
+            let viewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: $0))
+            self.bindGoodsCellViewModel(viewModel)
+            return .goods(viewModel)
+        }
 
         loadDataSubject
             .map { [.init(items: [banner] + goodsList)] }
@@ -53,4 +57,34 @@ final class HomeViewModel: ViewModel {
 // MARK: - Other Methods
 extension HomeViewModel {
 
+    private func bindGoodsCellViewModel(_ viewModel: GoodsCellViewModel) {
+        viewModel.output.favoriteTapped
+            .withLatestFrom(sectionModelsRelay) { ($0, $1) }
+            .map { [weak self] goods, sectionModels -> [HomeSectionModel]? in
+                guard let section = sectionModels.first else { return nil }
+                guard let goodsIndex = section.getGoodsCellViewModelIndex(viewModel) else { return nil }
+
+                let oldGoods = viewModel.dependency.goods
+                let newGoods = Goods(
+                    id: oldGoods.id,
+                    name: oldGoods.name,
+                    image: oldGoods.image,
+                    actualPrice: oldGoods.actualPrice,
+                    price: oldGoods.price,
+                    isNew: oldGoods.isNew,
+                    cellCount: oldGoods.cellCount,
+                    isFavorite: !oldGoods.isFavorite
+                )
+
+                let newViewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
+                self?.bindGoodsCellViewModel(newViewModel)
+                var newItems: [HomeItem] = section.items
+                newItems[goodsIndex] = .goods(newViewModel)
+                let newSection: HomeSectionModel = HomeSectionModel(items: newItems)
+                return [newSection]
+            }
+            .filterNil()
+            .bind(to: sectionModelsRelay)
+            .disposed(by: disposeBag)
+    }
 }
