@@ -7,7 +7,8 @@
 
 import Then
 
-struct Goods {
+struct Goods: Codable {
+
     let id: Int
     let name: String
     let image: String
@@ -19,21 +20,16 @@ struct Goods {
         Int((1 - Float(price) / Float(actualPrice)) * 100)
     }
     var isFavorite: Bool = false
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case image
+        case actualPrice = "actual_price"
+        case price
+        case isNew = "is_new"
+        case sellCount = "sell_count"
+    }
 }
 
 extension Goods: Then { }
-
-extension Goods {
-
-    static var dummies: [Goods] = (0..<20).map {
-        .init(
-            id: $0,
-            name: "[세트할인!] Goods \($0)",
-            image: "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210122_1611290798811044s.jpg",
-            actualPrice: 10000,
-            price: 9000,
-            isNew: true,
-            cellCount: 9
-        )
-    }
-}

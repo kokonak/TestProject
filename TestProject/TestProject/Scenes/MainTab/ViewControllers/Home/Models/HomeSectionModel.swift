@@ -20,6 +20,21 @@ struct HomeSectionModel {
             return false
         })
     }
+
+    func lastGoodsId() -> Int? {
+        let lastItem = items.filter {
+            if case .goods = $0 {
+                return true
+            }
+            return false
+        }
+        .last
+
+        if case .goods(let viewModel) = lastItem {
+            return viewModel.dependency.goods.id
+        }
+        return nil
+    }
 }
 
 extension HomeSectionModel: SectionModelType {
