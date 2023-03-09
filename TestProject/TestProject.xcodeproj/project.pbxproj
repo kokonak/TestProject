@@ -12,7 +12,6 @@
 		B6B5D86E29B786F100BD7005 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86D29B786F100BD7005 /* BannerView.swift */; };
 		B6B5D87129B7870B00BD7005 /* BannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87029B7870B00BD7005 /* BannerViewModel.swift */; };
 		B6B5D87329B8050800BD7005 /* BannerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87229B8050800BD7005 /* BannerViewCell.swift */; };
-		B6B5D87629B8069D00BD7005 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87529B8069D00BD7005 /* ReusableView.swift */; };
 		B6B5D87829B87A2200BD7005 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D87729B87A2200BD7005 /* Banner.swift */; };
 		B6B5D88329B891FA00BD7005 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D88129B891FA00BD7005 /* HomeViewController.swift */; };
 		B6B5D88429B891FA00BD7005 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D88229B891FA00BD7005 /* HomeViewModel.swift */; };
@@ -24,6 +23,8 @@
 		B6B5D89C29B8CE8B00BD7005 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D89B29B8CE8B00BD7005 /* HomeItem.swift */; };
 		B6B5D89E29B8CEC700BD7005 /* HomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D89D29B8CEC700BD7005 /* HomeSectionModel.swift */; };
 		B6B5D8A029B8CF1900BD7005 /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D89F29B8CF1900BD7005 /* Goods.swift */; };
+		B6E80EBB29B997E200221E3C /* UICollectionReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E80EBA29B997E200221E3C /* UICollectionReusableView+Extension.swift */; };
+		B6E80EBE29B997EE00221E3C /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E80EBD29B997EE00221E3C /* UICollectionView+Extension.swift */; };
 		B6F5C1AF29B5AE010002A966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */; };
 		B6F5C1B129B5AE010002A966 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */; };
 		B6F5C1B829B5AE020002A966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F5C1B729B5AE020002A966 /* Assets.xcassets */; };
@@ -70,7 +71,6 @@
 		B6B5D86D29B786F100BD7005 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B6B5D87029B7870B00BD7005 /* BannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewModel.swift; sourceTree = "<group>"; };
 		B6B5D87229B8050800BD7005 /* BannerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewCell.swift; sourceTree = "<group>"; };
-		B6B5D87529B8069D00BD7005 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		B6B5D87729B87A2200BD7005 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		B6B5D88129B891FA00BD7005 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B6B5D88229B891FA00BD7005 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +81,8 @@
 		B6B5D89B29B8CE8B00BD7005 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		B6B5D89D29B8CEC700BD7005 /* HomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionModel.swift; sourceTree = "<group>"; };
 		B6B5D89F29B8CF1900BD7005 /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
+		B6E80EBA29B997E200221E3C /* UICollectionReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Extension.swift"; sourceTree = "<group>"; };
+		B6E80EBD29B997EE00221E3C /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		B6F5C1AB29B5AE010002A966 /* TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F5C1AE29B5AE010002A966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F5C1B029B5AE010002A966 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 			children = (
 				B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */,
 				B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */,
+				B6E80EBA29B997E200221E3C /* UICollectionReusableView+Extension.swift */,
+				B6E80EBD29B997EE00221E3C /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				B6F5C22129B6FF6D0002A966 /* ViewModel.swift */,
-				B6B5D87529B8069D00BD7005 /* ReusableView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -588,10 +591,11 @@
 				B6B5D88F29B894F500BD7005 /* HomeBannerCell.swift in Sources */,
 				B6B5D89E29B8CEC700BD7005 /* HomeSectionModel.swift in Sources */,
 				B6B5D8A029B8CF1900BD7005 /* Goods.swift in Sources */,
+				B6E80EBE29B997EE00221E3C /* UICollectionView+Extension.swift in Sources */,
+				B6E80EBB29B997E200221E3C /* UICollectionReusableView+Extension.swift in Sources */,
 				B6F5C21E29B6FF550002A966 /* MainTabViewController.swift in Sources */,
 				B6B5D87829B87A2200BD7005 /* Banner.swift in Sources */,
 				B6B5D87329B8050800BD7005 /* BannerViewCell.swift in Sources */,
-				B6B5D87629B8069D00BD7005 /* ReusableView.swift in Sources */,
 				B6B5D88D29B893F600BD7005 /* GoodsCellViewModel.swift in Sources */,
 				B6B5D88329B891FA00BD7005 /* HomeViewController.swift in Sources */,
 				B6B5D88B29B893E800BD7005 /* GoodsCell.swift in Sources */,
