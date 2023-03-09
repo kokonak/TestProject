@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6A699D629B9FDB9009EB1E2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B6A699D529B9FDB9009EB1E2 /* RxMoya */; };
 		B6A699DF29BA1DDD009EB1E2 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */; };
 		B6A699E229BA1DF2009EB1E2 /* GoodsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */; };
 		B6B5D86629B7835600BD7005 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */; };
@@ -125,6 +126,7 @@
 				B6F5C23C29B75A3C0002A966 /* RxOptional in Frameworks */,
 				B6F5C1FE29B6E18A0002A966 /* RswiftLibrary in Frameworks */,
 				B6F5C1F829B6E00C0002A966 /* SDWebImage in Frameworks */,
+				B6A699D629B9FDB9009EB1E2 /* RxMoya in Frameworks */,
 				B6F5C20C29B6E3090002A966 /* Then in Frameworks */,
 				B6F5C22729B718A00002A966 /* RxCocoa in Frameworks */,
 				B6F5C20829B6E2F80002A966 /* SnapKit in Frameworks */,
@@ -547,6 +549,7 @@
 				B6F5C22629B718A00002A966 /* RxCocoa */,
 				B6B5D88729B892E700BD7005 /* RxDataSources */,
 				B6E80EC429B9B6C100221E3C /* RealmSwift */,
+				B6A699D529B9FDB9009EB1E2 /* RxMoya */,
 			);
 			productName = TestProject;
 			productReference = B6F5C1AB29B5AE010002A966 /* TestProject.app */;
@@ -1125,6 +1128,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B6A699D529B9FDB9009EB1E2 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
 		B6B5D88729B892E700BD7005 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B6B5D88629B892E700BD7005 /* XCRemoteSwiftPackageReference "RxDataSources" */;
