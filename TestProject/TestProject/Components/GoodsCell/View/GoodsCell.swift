@@ -86,6 +86,7 @@ extension GoodsCell {
         containerView.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
+            $0.bottom.lessThanOrEqualToSuperview().priority(.high)
             $0.width.height.equalTo(80)
         }
 
@@ -101,7 +102,8 @@ extension GoodsCell {
         containerView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.leading.equalTo(imageView.snp.trailing).offset(18)
-            $0.top.trailing.bottom.equalToSuperview()
+            $0.top.trailing.equalToSuperview()
+            $0.bottom.lessThanOrEqualToSuperview()
         }
 
         let priceStackView = UIStackView().then {
