@@ -14,7 +14,7 @@ struct Goods {
     let actualPrice: Int // 기본 가격
     let price: Int // 할인된 가격
     let isNew: Bool
-    let cellCount: Int
+    let sellCount: Int
     var discount: Int {
         Int((1 - Float(price) / Float(actualPrice)) * 100)
     }
