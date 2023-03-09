@@ -95,7 +95,7 @@ extension MainTabViewController {
         let controller: UIViewController
         switch tab {
             case .home:     controller = HomeViewController()
-            case .favorite: controller = UIViewController()
+            case .favorite: controller = FavoriteViewController()
         }
         return controller.then {
             $0.tabBarItem = UITabBarItem(
