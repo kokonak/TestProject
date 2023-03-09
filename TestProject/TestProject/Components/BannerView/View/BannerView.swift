@@ -60,7 +60,6 @@ extension BannerView {
         addSubview(collectionView)
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.height.equalTo(0)
         }
 
         addSubview(bannerCountContainerView)
@@ -156,14 +155,20 @@ extension BannerView {
                 width: self.collectionView.frame.width,
                 height: round(image.size.height / image.size.width * self.collectionView.frame.width)
             )
-            self.collectionView.snp.updateConstraints {
-                $0.height.equalTo(self.flowLayout.itemSize.height)
+            self.collectionView.snp.remakeConstraints {
+                $0.edges.equalToSuperview()
+                $0.height.equalTo(self.flowLayout.itemSize.height).priority(.high)
             }
-            self.collectionView.layoutIfNeeded()
+
+            UIView.setAnimationsEnabled(false)
+            self.superview?.invalidateIntrinsicContentSize()
+            UIView.setAnimationsEnabled(true)
 
             // 배너가 1개 초과시 실제 첫번째 아이템의 인덱스는 1이므로 해당 위치로 스크롤 해줌
             guard banners.count > 1 else { return }
-            self.collectionView.setContentOffset(CGPoint(x: self.flowLayout.itemSize.width, y: 0), animated: false)
+            DispatchQueue.main.async {
+                self.collectionView.setContentOffset(CGPoint(x: self.flowLayout.itemSize.width, y: 0), animated: false)
+            }
         }
     }
 

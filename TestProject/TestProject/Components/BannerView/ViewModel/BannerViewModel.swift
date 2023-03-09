@@ -37,7 +37,7 @@ final class BannerViewModel: ViewModel {
     private let bannerCountTextRelay = PublishRelay<String>()
     private let isBannerCountHiddenRelay = PublishRelay<Bool>()
     
-    init(dependency: Dependency = Dependency()) {
+    init(_ dependency: Dependency = Dependency()) {
         self.dependency = dependency
         input = Input(
             banners: bannersSubject.asObserver(),

@@ -37,6 +37,7 @@ extension BannerViewCell {
 
 // MARK: - Other Methods
 extension BannerViewCell {
+
     func setData(_ banner: Banner) {
         imageView.sd_setImage(with: URL(string: banner.image))
     }

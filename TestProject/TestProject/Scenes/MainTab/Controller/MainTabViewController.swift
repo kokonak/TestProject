@@ -94,7 +94,7 @@ extension MainTabViewController {
     private func getViewController(with tab: TabModel) -> UIViewController {
         let controller: UIViewController
         switch tab {
-            case .home:     controller = UIViewController()
+            case .home:     controller = HomeViewController()
             case .favorite: controller = UIViewController()
         }
         return controller.then {
