@@ -38,6 +38,7 @@ final class BannerView: UIView {
 
     private let viewModel: BannerViewModel
     private let disposeBag = DisposeBag()
+    private var timer: Timer?
 
     init(_ viewModel: BannerViewModel) {
         self.viewModel = viewModel
@@ -92,9 +93,11 @@ extension BannerView {
 
     /// Binding input of ViewModel
     private func bindViewModelInput() {
-        collectionView.rx.didEndDecelerating
+        collectionView.rx.didScroll
             .withUnretained(self)
-            .map { owner, _ in Int(owner.collectionView.contentOffset.x / owner.flowLayout.itemSize.width) }
+            .map { owner, _ in
+                Int(owner.collectionView.contentOffset.x / (owner.flowLayout.itemSize.width / 2) + 1) / 2
+            }
             .bind(to: viewModel.input.currentBannerIndex)
             .disposed(by: disposeBag)
     }
@@ -141,7 +144,16 @@ extension BannerView {
         .bind(to: collectionView.rx.contentOffset)
         .disposed(by: disposeBag)
 
-        #warning("auto scroll 추가")
+        // auto scroll
+        collectionView.rx.didScroll
+            .withLatestFrom(viewModel.output.banners)
+            .asDriver(onErrorJustReturn: [])
+            .filter { $0.count > 1 }
+            .drive(onNext: { [weak self] banners in
+                self?.handleAutoScroll(bannerCount: banners.count)
+            })
+            .disposed(by: disposeBag)
+
     }
 }
 
@@ -191,5 +203,23 @@ extension BannerView {
                 offset = nil
         }
         return offset
+    }
+
+    private func handleAutoScroll(bannerCount: Int) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { [weak self] _ in
+            guard let self = self else { return }
+
+            let contentOffsetX = self.collectionView.contentOffset.x
+            let width = self.flowLayout.itemSize.width
+            let nextIndex = Int(contentOffsetX / self.collectionView.frame.width) + 1
+
+            if bannerCount > nextIndex {
+                self.collectionView.scrollToItem(at: [0, nextIndex], at: .centeredHorizontally, animated: true)
+            } else {
+                self.collectionView.scrollToItem(at: [0, 1], at: .centeredHorizontally, animated: false)
+                self.collectionView.scrollToItem(at: [0, 2], at: .centeredHorizontally, animated: true)
+            }
+        })
     }
 }
