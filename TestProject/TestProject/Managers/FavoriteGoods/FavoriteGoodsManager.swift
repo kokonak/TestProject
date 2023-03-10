@@ -18,7 +18,7 @@ final class FavoriteGoodsManager {
     private(set) lazy var favoriteGoodsList: Observable<[Goods]> = goodsListRelay.asObservable()
     private lazy var goodsListRelay = BehaviorRelay<[Goods]>(value: [])
     private let pageSize: Int = 5
-    private let realm = try! Realm()
+    let realm = try! Realm()
 
     init() {
         loadData()

@@ -76,8 +76,7 @@ final class HomeViewModel: ViewModel {
             .disposed(by: disposeBag)
 
         homeResponseRelay
-            .compactMap { $0.getFailure() }
-            .map { () }
+            .map { _ in () }
             .bind(to: stopRefreshingRelay)
             .disposed(by: disposeBag)
 
