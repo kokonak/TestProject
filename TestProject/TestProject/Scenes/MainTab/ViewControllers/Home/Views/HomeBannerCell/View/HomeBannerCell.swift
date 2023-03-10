@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-final class HomeBannerCell: UICollectionViewCell {
+final class HomeBannerCell: UICollectionReusableView {
 
     private let bannerViewModel = BannerViewModel()
     private lazy var bannerView = BannerView(bannerViewModel)
@@ -36,7 +36,7 @@ extension HomeBannerCell {
     private func setupUI() {
         clipsToBounds = true
 
-        contentView.addSubview(bannerView)
+        addSubview(bannerView)
         bannerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

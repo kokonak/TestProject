@@ -22,14 +22,28 @@ final class HomeViewController: UIViewController {
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(1)
         )
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(1)
+        )
+        let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [headerItem]
         return UICollectionViewCompositionalLayout(section: section)
     }()
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout).then {
-        $0.register(HomeBannerCell.self)
+        $0.register(
+            HomeBannerCell.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: HomeBannerCell.reuseIdentifier
+        )
         $0.register(GoodsCell.self)
         $0.alwaysBounceVertical = true
         $0.refreshControl = refreshControl
@@ -103,19 +117,24 @@ extension HomeViewController {
 
     /// Binding output of ViewModel
     private func bindViewModelOutput() {
-        let dataSource = RxCollectionViewSectionedReloadDataSource<HomeSectionModel> { _, collectionView, index, item in
-            switch item {
-                case .banner(let viewModel):
-                    let cell: HomeBannerCell = collectionView.dequeueReusableCell(forIndexPath: index)
-                    cell.setData(viewModel)
-                    return cell
+        let dataSource = RxCollectionViewSectionedReloadDataSource<HomeSectionModel>(
+            configureCell: { _, collectionView, index, viewModel in
+                let cell: GoodsCell = collectionView.dequeueReusableCell(forIndexPath: index)
+                cell.setData(viewModel)
+                return cell
+            },
+            configureSupplementaryView: { dataSource, collectionView, identifer, index in
+                guard let viewModel = dataSource.sectionModels.first?.bannerViewModel else {
+                    return HomeBannerCell()
+                }
 
-                case .goods(let viewModel):
-                    let cell: GoodsCell = collectionView.dequeueReusableCell(forIndexPath: index)
-                    cell.setData(viewModel)
-                    return cell
-            }
-        }
+                let view: HomeBannerCell = collectionView.dequeueReusableSupplementaryView(
+                    forIndexPath: index,
+                    kind: UICollectionView.elementKindSectionHeader
+                )
+                view.setData(viewModel)
+                return view
+            })
 
         viewModel.output.sectionModels
             .bind(to: collectionView.rx.items(dataSource: dataSource))

@@ -19,4 +19,18 @@ extension UICollectionView {
         }
         return cell
     }
+
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(
+        forIndexPath indexPath: IndexPath,
+        kind: String
+    ) -> T {
+        guard let view = dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: T.reuseIdentifier,
+            for: indexPath
+        ) as? T else {
+            fatalError("Could not deqeue reusable supplymentary view with identifier: \(T.reuseIdentifier)")
+        }
+        return view
+    }
 }

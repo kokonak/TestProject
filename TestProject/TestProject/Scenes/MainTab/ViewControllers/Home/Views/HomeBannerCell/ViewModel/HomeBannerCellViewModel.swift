@@ -44,6 +44,7 @@ final class HomeBannerCellViewModel: ViewModel {
         loadDataSubject
             .withUnretained(self)
             .map { owner, _ in owner.dependency.banners }
+            .distinctUntilChanged()
             .bind(to: bannersRelay)
             .disposed(by: disposeBag)
     }
