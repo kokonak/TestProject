@@ -26,7 +26,7 @@ final class BannerView: UIView {
     }
 
     private let bannerCountContainerView = UIView().then {
-        $0.backgroundColor = .black.withAlphaComponent(0.2)
+        $0.backgroundColor = .black.withAlphaComponent(0.4)
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
     }
