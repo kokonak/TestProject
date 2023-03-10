@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6325AC229BB22D2007D860B /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6325AC129BB22D2007D860B /* HomeViewModelTest.swift */; };
+		B6325AC529BB2310007D860B /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = B6325AC429BB2310007D860B /* RxTest */; };
+		B6325AC729BB2331007D860B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6325AC629BB2331007D860B /* RealmSwift */; };
+		B6325ACA29BB2341007D860B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B6325AC929BB2341007D860B /* RxCocoa */; };
+		B6325ACD29BB234A007D860B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B6325ACC29BB234A007D860B /* SDWebImage */; };
 		B6A699D629B9FDB9009EB1E2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B6A699D529B9FDB9009EB1E2 /* RxMoya */; };
 		B6A699DF29BA1DDD009EB1E2 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */; };
 		B6A699E229BA1DF2009EB1E2 /* GoodsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */; };
@@ -77,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6325AC129BB22D2007D860B /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListResponse.swift; sourceTree = "<group>"; };
 		B6A699E329BABA41009EB1E2 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
@@ -145,6 +151,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6325ACA29BB2341007D860B /* RxCocoa in Frameworks */,
+				B6325AC729BB2331007D860B /* RealmSwift in Frameworks */,
+				B6325ACD29BB234A007D860B /* SDWebImage in Frameworks */,
+				B6325AC529BB2310007D860B /* RxTest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				B6F5C1C529B5AE020002A966 /* TestProjectTests.swift */,
+				B6325AC129BB22D2007D860B /* HomeViewModelTest.swift */,
 			);
 			path = TestProjectTests;
 			sourceTree = "<group>";
@@ -575,6 +586,12 @@
 				B6F5C1C329B5AE020002A966 /* PBXTargetDependency */,
 			);
 			name = TestProjectTests;
+			packageProductDependencies = (
+				B6325AC429BB2310007D860B /* RxTest */,
+				B6325AC629BB2331007D860B /* RealmSwift */,
+				B6325AC929BB2341007D860B /* RxCocoa */,
+				B6325ACC29BB234A007D860B /* SDWebImage */,
+			);
 			productName = TestProjectTests;
 			productReference = B6F5C1C129B5AE020002A966 /* TestProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -724,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F5C1C629B5AE020002A966 /* TestProjectTests.swift in Sources */,
+				B6325AC229BB22D2007D860B /* HomeViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,13 +970,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RTVF4J77W7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kokonak.example.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestProject";
 			};
 			name = Debug;
@@ -972,13 +993,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RTVF4J77W7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kokonak.example.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestProject";
 			};
 			name = Release;
@@ -1136,6 +1160,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B6325AC429BB2310007D860B /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		B6325AC629BB2331007D860B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6E80EC329B9B6C100221E3C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		B6325AC929BB2341007D860B /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F329B6DFF90002A966 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B6325ACC29BB234A007D860B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F5C1F629B6E00C0002A966 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		B6A699D529B9FDB9009EB1E2 /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B6F5C1F029B6DFE80002A966 /* XCRemoteSwiftPackageReference "Moya" */;

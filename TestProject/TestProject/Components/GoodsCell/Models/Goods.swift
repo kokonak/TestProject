@@ -7,7 +7,7 @@
 
 import Then
 
-struct Goods: Codable {
+struct Goods: Codable, Equatable {
 
     let id: Int
     let name: String
