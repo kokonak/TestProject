@@ -9,37 +9,19 @@ import RxDataSources
 
 struct HomeSectionModel {
 
-    var items: [HomeItem]
+    let bannerViewModel: HomeBannerCellViewModel
+    var items: [GoodsCellViewModel]
 
-    func getGoodsCellViewModelIndex(_ viewModel: GoodsCellViewModel) -> Int? {
-        items.firstIndex(where: { item in
-            if case .goods(let cellViewModel) = item,
-               viewModel.dependency.goods.id == cellViewModel.dependency.goods.id {
-                return true
-            }
-            return false
-        })
-    }
-
-    func lastGoodsId() -> Int? {
-        let lastItem = items.filter {
-            if case .goods = $0 {
-                return true
-            }
-            return false
-        }
-        .last
-
-        if case .goods(let viewModel) = lastItem {
-            return viewModel.dependency.goods.id
-        }
-        return nil
+    var lastGoodsId: Int? {
+        items.last?.dependency.goods.id
     }
 }
 
 extension HomeSectionModel: SectionModelType {
 
-    init(original: HomeSectionModel, items: [HomeItem]) {
+    typealias Item = GoodsCellViewModel
+
+    init(original: HomeSectionModel, items: [Item]) {
         self = original
         self.items = items
     }

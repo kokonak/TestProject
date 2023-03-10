@@ -65,10 +65,10 @@ final class HomeViewModel: ViewModel {
             .compactMap { $0.getSuccess() }
             .withUnretained(self)
             .map { owner, response in
-                let goodsItems = owner.goodsListToHomeItem(response.goods)
-                self.isLoadedDone = false
+                owner.isLoadedDone = false
                 let sectionModel = HomeSectionModel(
-                    items: [.banner(.init(.init(banners: response.banners)))] + goodsItems
+                    bannerViewModel: HomeBannerCellViewModel(.init(banners: response.banners)),
+                    items: owner.getGoodsCellViewModels(response.goods)
                 )
                 return [sectionModel]
             }
@@ -87,7 +87,7 @@ final class HomeViewModel: ViewModel {
             .withUnretained(self)
             .filter { owner, _ in !owner.isLoadedDone }
             .withLatestFrom(sectionModelsRelay)
-            .compactMap { sectionModels -> Int? in sectionModels.first?.lastGoodsId() }
+            .compactMap { $0.last?.lastGoodsId }
             .withUnretained(self)
             .flatMap { owner, lastId in
                 owner.dependency.api.rx.request(.getGoodsList(lastId: lastId), of: GoodsListResponse.self)
@@ -102,11 +102,13 @@ final class HomeViewModel: ViewModel {
                 guard let self = self else { return nil }
                 guard let section = sectionModels.first else { return nil }
 
-                let goodsItems = self.goodsListToHomeItem(response.goods)
-                self.isLoadedDone = goodsItems.count == 0
+                self.isLoadedDone = response.goods.count == 0
 
-                guard goodsItems.isNotEmpty else { return nil }
-                let newSection = HomeSectionModel(items: section.items + goodsItems)
+                guard response.goods.isNotEmpty else { return nil }
+                let newSection = HomeSectionModel(
+                    bannerViewModel: section.bannerViewModel,
+                    items: section.items + self.getGoodsCellViewModels(response.goods)
+                )
                 return [newSection]
             }
             .bind(to: sectionModelsRelay)
@@ -117,14 +119,14 @@ final class HomeViewModel: ViewModel {
 // MARK: - Other Methods
 extension HomeViewModel {
 
-    private func goodsListToHomeItem(_ goodsList: [Goods]) -> [HomeItem] {
+    private func getGoodsCellViewModels(_ goodsList: [Goods]) -> [GoodsCellViewModel] {
         goodsList.map {
             let goods = $0.with {
                 $0.isFavorite = FavoriteGoodsManager.shared.isFavoriteGoods($0.id)
             }
             let viewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: goods))
             self.bindGoodsCellViewModel(viewModel)
-            return .goods(viewModel)
+            return viewModel
         }
     }
 
@@ -133,7 +135,11 @@ extension HomeViewModel {
             .withLatestFrom(sectionModelsRelay) { ($0, $1) }
             .map { [weak self] goods, sectionModels -> [HomeSectionModel]? in
                 guard let section = sectionModels.first else { return nil }
-                guard let goodsIndex = section.getGoodsCellViewModelIndex(viewModel) else { return nil }
+                guard let goodsIndex = section.items.firstIndex(
+                    where: { viewModel.dependency.goods.id == $0.dependency.goods.id }
+                ) else {
+                    return nil
+                }
 
                 let oldGoods = viewModel.dependency.goods
 
@@ -149,9 +155,9 @@ extension HomeViewModel {
 
                 let newViewModel = GoodsCellViewModel(.init(isFavoriteEnabled: true, goods: newGoods))
                 self?.bindGoodsCellViewModel(newViewModel)
-                var newItems: [HomeItem] = section.items
-                newItems[goodsIndex] = .goods(newViewModel)
-                let newSection: HomeSectionModel = HomeSectionModel(items: newItems)
+                var newItems = section.items
+                newItems[goodsIndex] = newViewModel
+                let newSection = HomeSectionModel(bannerViewModel: section.bannerViewModel, items: newItems)
                 return [newSection]
             }
             .filterNil()
