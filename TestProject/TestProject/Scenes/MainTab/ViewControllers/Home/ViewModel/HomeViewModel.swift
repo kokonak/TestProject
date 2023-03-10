@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Moya
 import RxMoya
+import Foundation
 
 final class HomeViewModel: ViewModel {
 
@@ -24,6 +25,7 @@ final class HomeViewModel: ViewModel {
 
     struct Output {
         let sectionModels: Observable<[HomeSectionModel]>
+        let stopRefreshing: Observable<Void>
     }
 
     let dependency: Dependency
@@ -33,6 +35,7 @@ final class HomeViewModel: ViewModel {
     private let loadDataSubject = PublishSubject<Void>()
     private let loadMoreSubject = PublishSubject<Void>()
     private let sectionModelsRelay = PublishRelay<[HomeSectionModel]>()
+    private let stopRefreshingRelay = PublishRelay<Void>()
     private var isLoadedDone: Bool = false
 
     init(_ dependency: Dependency = Dependency()) {
@@ -41,49 +44,72 @@ final class HomeViewModel: ViewModel {
             loadData: loadDataSubject.asObserver(),
             loadMore: loadMoreSubject.asObserver()
         )
-        output = Output(sectionModels: sectionModelsRelay.asObservable())
+        output = Output(
+            sectionModels: sectionModelsRelay.asObservable(),
+            stopRefreshing: stopRefreshingRelay.asObservable()
+        )
 
         transform()
     }
 
     func transform() {
+        let homeResponseRelay = PublishRelay<ResponseType<HomeResponse>>()
+
         loadDataSubject
             .withUnretained(self)
-            .flatMap { owner, _ in owner.dependency.api.rx.request(.getHomeData).asObservable() }
-            .subscribe(onNext: { [weak self] result in
-                guard let self = self else { return }
-                guard let response = try? result.map(HomeResponse.self) else { return }
+            .flatMap { owner, _ in owner.dependency.api.rx.request(.getHomeData, of: HomeResponse.self) }
+            .bind(to: homeResponseRelay)
+            .disposed(by: disposeBag)
 
-                let goodsItems = self.goodsListToHomeItem(response.goods)
+        homeResponseRelay
+            .compactMap { $0.getSuccess() }
+            .withUnretained(self)
+            .map { owner, response in
+                let goodsItems = owner.goodsListToHomeItem(response.goods)
                 self.isLoadedDone = false
                 let sectionModel = HomeSectionModel(
                     items: [.banner(.init(.init(banners: response.banners)))] + goodsItems
                 )
-                self.sectionModelsRelay.accept([sectionModel])
-            })
+                return [sectionModel]
+            }
+            .bind(to: sectionModelsRelay)
             .disposed(by: disposeBag)
+
+        homeResponseRelay
+            .compactMap { $0.getFailure() }
+            .map { () }
+            .bind(to: stopRefreshingRelay)
+            .disposed(by: disposeBag)
+
+        let goodsResponseRelay = PublishRelay<ResponseType<GoodsListResponse>>()
 
         loadMoreSubject
             .withUnretained(self)
             .filter { owner, _ in !owner.isLoadedDone }
             .withLatestFrom(sectionModelsRelay)
-            .map { sectionModels -> Int? in sectionModels.first?.lastGoodsId() }
-            .filterNil()
+            .compactMap { sectionModels -> Int? in sectionModels.first?.lastGoodsId() }
             .withUnretained(self)
-            .flatMap { owner, lastId in owner.dependency.api.rx.request(.getGoodsList(lastId: lastId)) }
+            .flatMap { owner, lastId in
+                owner.dependency.api.rx.request(.getGoodsList(lastId: lastId), of: GoodsListResponse.self)
+            }
+            .bind(to: goodsResponseRelay)
+            .disposed(by: disposeBag)
+
+        goodsResponseRelay
+            .compactMap { $0.getSuccess() }
             .withLatestFrom(sectionModelsRelay) { ($0, $1) }
-            .subscribe { [weak self] result, sectionModels in
-                guard let self = self else { return }
-                guard let section = sectionModels.first else { return }
-                guard let response = try? result.map(GoodsListResponse.self) else { return }
+            .compactMap { [weak self] response, sectionModels -> [HomeSectionModel]? in
+                guard let self = self else { return nil }
+                guard let section = sectionModels.first else { return nil }
 
                 let goodsItems = self.goodsListToHomeItem(response.goods)
                 self.isLoadedDone = goodsItems.count == 0
 
-                guard goodsItems.isNotEmpty else { return }
+                guard goodsItems.isNotEmpty else { return nil }
                 let newSection = HomeSectionModel(items: section.items + goodsItems)
-                self.sectionModelsRelay.accept([newSection])
+                return [newSection]
             }
+            .bind(to: sectionModelsRelay)
             .disposed(by: disposeBag)
     }
 }

@@ -121,8 +121,8 @@ extension HomeViewController {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
-        viewModel.output.sectionModels
-            .map { _ in false }
+        viewModel.output.stopRefreshing
+            .map { false }
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }

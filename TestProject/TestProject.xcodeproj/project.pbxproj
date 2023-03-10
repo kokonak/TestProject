@@ -10,6 +10,8 @@
 		B6A699D629B9FDB9009EB1E2 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = B6A699D529B9FDB9009EB1E2 /* RxMoya */; };
 		B6A699DF29BA1DDD009EB1E2 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */; };
 		B6A699E229BA1DF2009EB1E2 /* GoodsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */; };
+		B6A699E429BABA41009EB1E2 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E329BABA41009EB1E2 /* ResponseType.swift */; };
+		B6A699E729BABA65009EB1E2 /* MoyaProviderType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A699E629BABA65009EB1E2 /* MoyaProviderType+Extension.swift */; };
 		B6B5D86629B7835600BD7005 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */; };
 		B6B5D86829B7839600BD7005 /* UITabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */; };
 		B6B5D86E29B786F100BD7005 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5D86D29B786F100BD7005 /* BannerView.swift */; };
@@ -77,6 +79,8 @@
 /* Begin PBXFileReference section */
 		B6A699DE29BA1DDD009EB1E2 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		B6A699E129BA1DF2009EB1E2 /* GoodsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListResponse.swift; sourceTree = "<group>"; };
+		B6A699E329BABA41009EB1E2 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
+		B6A699E629BABA65009EB1E2 /* MoyaProviderType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProviderType+Extension.swift"; sourceTree = "<group>"; };
 		B6B5D86529B7835600BD7005 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Extension.swift"; sourceTree = "<group>"; };
 		B6B5D86D29B786F100BD7005 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				B6B5D86729B7839600BD7005 /* UITabBar+Extension.swift */,
 				B6E80EBA29B997E200221E3C /* UICollectionReusableView+Extension.swift */,
 				B6E80EBD29B997EE00221E3C /* UICollectionView+Extension.swift */,
+				B6A699E629BABA65009EB1E2 /* MoyaProviderType+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				B6A699DB29BA1DCA009EB1E2 /* HomeAPI */,
+				B6A699E329BABA41009EB1E2 /* ResponseType.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 				B6F5C21F29B6FF550002A966 /* MainTabViewModel.swift in Sources */,
 				B6B5D89C29B8CE8B00BD7005 /* HomeItem.swift in Sources */,
 				B6B5D88F29B894F500BD7005 /* HomeBannerCell.swift in Sources */,
+				B6A699E429BABA41009EB1E2 /* ResponseType.swift in Sources */,
 				B6B5D89E29B8CEC700BD7005 /* HomeSectionModel.swift in Sources */,
 				B6B5D8A029B8CF1900BD7005 /* Goods.swift in Sources */,
 				B6E80EBE29B997EE00221E3C /* UICollectionView+Extension.swift in Sources */,
@@ -689,6 +696,7 @@
 				B6E80ECE29B9F7A400221E3C /* HomeAPI.swift in Sources */,
 				B6E80EB929B994EA00221E3C /* FavoriteViewModel.swift in Sources */,
 				B6E80EBB29B997E200221E3C /* UICollectionReusableView+Extension.swift in Sources */,
+				B6A699E729BABA65009EB1E2 /* MoyaProviderType+Extension.swift in Sources */,
 				B6F5C21E29B6FF550002A966 /* MainTabViewController.swift in Sources */,
 				B6B5D87829B87A2200BD7005 /* Banner.swift in Sources */,
 				B6B5D87329B8050800BD7005 /* BannerViewCell.swift in Sources */,
