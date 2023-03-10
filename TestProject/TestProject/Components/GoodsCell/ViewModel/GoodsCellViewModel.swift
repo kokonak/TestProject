@@ -138,12 +138,12 @@ final class GoodsCellViewModel: ViewModel {
 
         goodsRelay
             .withUnretained(self)
-            .map { owner, goods in owner.convertIntToFomattedString(value: goods.cellCount) + "개 구매중" }
+            .map { owner, goods in owner.convertIntToFomattedString(value: goods.sellCount) + "개 구매중" }
             .bind(to: cellCountRelay)
             .disposed(by: disposeBag)
 
         goodsRelay
-            .map { $0.cellCount < 10 }
+            .map { $0.sellCount < 10 }
             .bind(to: isCellCountHiddenRelay)
             .disposed(by: disposeBag)
 

@@ -19,7 +19,7 @@ final class GoodsRealmObject: Object {
     @Persisted var cellCount: Int
     @Persisted var createdAt: Date
 
-    init(goods: Goods) {
+    convenience init(goods: Goods) {
         self.init()
         id = goods.id
         name = goods.name
@@ -27,7 +27,7 @@ final class GoodsRealmObject: Object {
         actualPrice = goods.actualPrice
         price = goods.price
         isNew = goods.isNew
-        cellCount = goods.cellCount
+        cellCount = goods.sellCount
         createdAt = Date()
     }
 
@@ -39,7 +39,7 @@ final class GoodsRealmObject: Object {
             actualPrice: actualPrice,
             price: price,
             isNew: isNew,
-            cellCount: cellCount
+            sellCount: cellCount
         )
     }
 }

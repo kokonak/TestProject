@@ -32,7 +32,10 @@ final class HomeViewController: UIViewController {
         $0.register(HomeBannerCell.self)
         $0.register(GoodsCell.self)
         $0.alwaysBounceVertical = true
+        $0.refreshControl = refreshControl
     }
+
+    private let refreshControl = UIRefreshControl()
 
     // MARK: - Properties
     private let viewModel: HomeViewModel
@@ -81,7 +84,21 @@ extension HomeViewController {
 
     /// Binding input of ViewModel
     private func bindViewModelInput() {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map { () }
+            .bind(to: viewModel.input.loadData)
+            .disposed(by: disposeBag)
 
+        collectionView.rx.willDisplayCell
+            .map { $0.at }
+            .withLatestFrom(viewModel.output.sectionModels) { ($0, $1) }
+            .filter { index, sectionModels in
+                guard let section = sectionModels.first else { return false }
+                return index.row == section.items.count - 1
+            }
+            .map { _, _ in () }
+            .bind(to: viewModel.input.loadMore)
+            .disposed(by: disposeBag)
     }
 
     /// Binding output of ViewModel
@@ -102,6 +119,11 @@ extension HomeViewController {
 
         viewModel.output.sectionModels
             .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        viewModel.output.stopRefreshing
+            .map { false }
+            .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
 
